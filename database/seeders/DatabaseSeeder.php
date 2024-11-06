@@ -12,6 +12,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        ProjectSeeder::class;
+        // chiamo il ProjectSeeder per il popolamento della tabella
+        $this->call([
+            ProjectSeeder::class
+        ]);
     }
 }
