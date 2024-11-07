@@ -5,7 +5,8 @@
         <div class="card w-100 pt-2">
             <div class="card-body">
                 <h5 class="card-title">Edit Project</h5>
-                <form action="{{ route('admin.projects.update', $project->id) }}" method="POST">
+                <form action="{{ route('admin.projects.update', $project->id) }}" method="POST"
+                    onsubmit="return confirm('Sei sicuro di voler modificare questo progetto?');">
                     @csrf
                     @method('PUT') <!-- Metodo PUT per l'aggiornamento -->
 

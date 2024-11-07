@@ -96,7 +96,7 @@ class ProjectController extends Controller
         $project->save();
 
         // Redirect con messaggio di successo
-        return redirect()->route('admin.projects.index')->with('success', 'Project updated successfully!');
+        return redirect()->route('admin.projects.index');
     }
 
 
