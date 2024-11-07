@@ -8,7 +8,7 @@
             !!! TODO !!!
             --}}
             <div class="col-12 text-center my-4">
-                <a href="#" class="btn btn-primary">Crea un nuovo progetto</a>
+                <a href="{{ route('admin.projects.create') }}" class="btn btn-primary">Crea un nuovo progetto</a>
             </div>
 
             @forelse ($projects as $project)

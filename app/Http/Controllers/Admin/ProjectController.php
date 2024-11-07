@@ -22,7 +22,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.projects.create');
     }
 
     /**
@@ -30,8 +30,26 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validazione dei dati
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'date' => 'required|date',
+            'languages' => 'required|string|max:255',
+            'description' => 'required|string',
+        ]);
+
+        // Creazione di un nuovo progetto
+        $project = new Project;
+        $project->name = $request->input('name');
+        $project->date = $request->input('date');
+        $project->languages = $request->input('languages');
+        $project->description = $request->input('description');
+        $project->save();
+
+        // Redirect con messaggio di successo
+        return redirect()->route('admin.projects.index')->with('success', 'Project created successfully!');
     }
+
 
     /**
      * Display the specified resource.
