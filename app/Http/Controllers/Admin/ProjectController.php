@@ -65,16 +65,40 @@ class ProjectController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        // Trova il progetto da modificare
+        $project = Project::findOrFail($id);
+
+        // Ritorna la vista di modifica con il progetto da modificare
+        return view('admin.projects.edit', compact('project'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        // Trova il progetto da modificare
+        $project = Project::findOrFail($id);
+
+        // Validazione dei dati
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'date' => 'required|date',
+            'languages' => 'required|string|max:255',
+            'description' => 'required|string',
+        ]);
+
+        // Aggiorna i dati del progetto
+        $project->name = $request->input('name');
+        $project->date = $request->input('date');
+        $project->languages = $request->input('languages');
+        $project->description = $request->input('description');
+        $project->save();
+
+        // Redirect con messaggio di successo
+        return redirect()->route('admin.projects.index')->with('success', 'Project updated successfully!');
     }
+
 
     /**
      * Remove the specified resource from storage.

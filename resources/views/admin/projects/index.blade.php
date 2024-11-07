@@ -30,7 +30,8 @@
                             <a href="{{ route('admin.projects.show', ['id' => $project->id]) }}"
                                 class="btn btn-primary mb-2">Visualizza</a>
                             {{-- Edit Button --}}
-                            <a href="# {{-- {{ route('admin.projects.edit', ['id' => $project->id]) }} --}}" class="btn btn-warning mb-2">Modifica</a>
+                            <a href="{{ route('admin.projects.edit', $project->id) }}"
+                                class="btn btn-warning mb-2">Modifica</a>
                             {{-- Delete Form --}}
                             <form action="{{ route('admin.projects.delete', ['id' => $project->id]) }}" method="POST"
                                 onsubmit="return confirm('Sei sicuro di voler eliminare questo progetto?');" class="w-100">
