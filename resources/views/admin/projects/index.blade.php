@@ -3,14 +3,12 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-12">
-                <h1 class="text-center">My Projects</h1>
-            </div>
+
             {{--
             !!! TODO !!!
             --}}
-            <div class="col-12 text-center my-3">
-                <a href="#" class="btn btn-primary">Create a new project</a>
+            <div class="col-12 text-center my-4">
+                <a href="#" class="btn btn-primary">Crea un nuovo progetto</a>
             </div>
 
             @forelse ($projects as $project)
@@ -30,17 +28,16 @@
                         <div class="card-footer d-flex flex-column">
                             {{-- Show Button --}}
                             <a href="{{ route('admin.projects.show', ['id' => $project->id]) }}"
-                                class="btn btn-primary mb-2">Show more...</a>
+                                class="btn btn-primary mb-2">Visualizza</a>
                             {{-- Edit Button --}}
-                            {{-- <a href="{{ route('admin.projects.edit', ['id' => $project->id]) }}"
-                                class="btn btn-warning mb-2">Edit</a> --}}
+                            <a href="# {{-- {{ route('admin.projects.edit', ['id' => $project->id]) }} --}}" class="btn btn-warning mb-2">Modifica</a>
                             {{-- Delete Form --}}
-                            {{-- <form action="{{ route('admin.projects.delete', ['id' => $project->id]) }}" method="POST"
-                                class="w-100">
+                            <form action="{{ route('admin.projects.delete', ['id' => $project->id]) }}" method="POST"
+                                onsubmit="return confirm('Sei sicuro di voler eliminare questo progetto?');" class="w-100">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger w-100">Delete</button>
-                            </form> --}}
+                                <button type="submit" class="btn btn-danger w-100">Elimina</button>
+                            </form>
                         </div>
                     </div>
                 </div>

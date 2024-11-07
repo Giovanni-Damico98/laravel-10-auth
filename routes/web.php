@@ -15,9 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get("/", [App\Http\Controllers\WelcomeController::class, 'index'])->name("welcome");
+
 
 Auth::routes();
 
@@ -28,4 +27,5 @@ Route::middleware("auth")->prefix("/admin")->name("admin.")->group(function () {
     Route::get("/projects/{id}", [AdminProjectController::class, "show"])->name("projects.show");
     Route::get("/projects/create", [AdminProjectController::class, "create"])->name("projects.create");
     Route::post("/projects", [AdminProjectController::class, "store"])->name("projects.store");
+    Route::delete("/projects/{id}", [AdminProjectController::class, "destroy"])->name("projects.delete");
 });

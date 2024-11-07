@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Project;
 use Illuminate\Http\Request;
 
-class ProjectController extends Controller
+class WelcomeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +13,7 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::all();
-        return view("admin.projects.index", compact("projects"));
+        return view("welcome", compact("projects"));
     }
 
     /**
@@ -38,8 +37,7 @@ class ProjectController extends Controller
      */
     public function show(string $id)
     {
-        $projects = Project::findOrFail($id);
-        return view('admin.projects.show', compact("projects"));
+        //
     }
 
     /**
@@ -63,11 +61,6 @@ class ProjectController extends Controller
      */
     public function destroy(string $id)
     {
-        // Trova il progetto per ID
-        $project = Project::findOrFail($id);
-
-        // Elimina il progetto
-        $project->delete();
-        return redirect()->route('admin.projects.index');
+        //
     }
 }

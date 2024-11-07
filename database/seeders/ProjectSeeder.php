@@ -16,13 +16,15 @@ class ProjectSeeder extends Seeder
      */
     public function run()
     {
+
+        DB::table('projects')->truncate();
         $faker = Faker::create();
 
         for ($i = 0; $i < 30; $i++) {
             DB::table('projects')->insert([
                 'name' => $faker->unique()->sentence(3),
                 'date' => $faker->date(),
-                'description' => $faker->optional()->paragraph(4),
+                'description' => $faker->paragraphs(2, true),
                 'languages' => $faker->optional()->words(3, true),
                 'created_at' => now(),
                 'updated_at' => now()
